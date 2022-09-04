@@ -1,0 +1,32 @@
+def solution(x,y):
+	m=int(x)
+	f=int(y)
+	count=0
+	cnt=0
+	def gdmb(x,y):
+		count=0
+		while y != 0:
+			count+=x//y
+			x, y = y, x % y
+		if x!=1:
+			return(str("impossible"))
+		else:
+			return count-1		
+	
+	if m>f:
+		cnt=gdmb(f,m)
+	if f>m:
+		cnt=gdmb(m,f)
+	if m%2==0 and f%2==0:
+		return (str("impossible"))
+	if m%3==0 and f%3==0:
+		return (str("impossible"))
+	if m%f==0 or f%m==0:
+		if m==1:
+			return(str(f-1))
+		if f==1:
+			return(str(m-1))
+		else:
+			return (str("impossible"))
+	else:
+		return(str(cnt))
